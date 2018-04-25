@@ -12,6 +12,12 @@ class BlocksController < ApplicationController
   def show
   end
 
+  def trigger
+    puts params["block_hash"]
+
+    render json: {status: 200}, status: 200
+  end
+
   # GET /blocks/new
   def new
     @block = Block.new
