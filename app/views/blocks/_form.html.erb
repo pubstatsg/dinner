@@ -1,0 +1,27 @@
+<%= form_with(model: block, local: true) do |form| %>
+  <% if block.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(block.errors.count, "error") %> prohibited this block from being saved:</h2>
+
+      <ul>
+      <% block.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :height %>
+    <%= form.text_field :height %>
+  </div>
+
+  <div class="field">
+    <%= form.label :block_hash %>
+    <%= form.text_field :block_hash %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

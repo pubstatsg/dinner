@@ -5,3 +5,5 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Block.create(height: "519894", block_hash: "000000000000000000017351362274cd85109d520da9b72af2c83329b7a2134a")
