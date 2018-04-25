@@ -4,7 +4,7 @@ class BlocksController < ApplicationController
   # GET /blocks
   # GET /blocks.json
   def index
-    @blocks = Block.all
+    @blocks = Block.all.order(height: :desc)
   end
 
   # GET /blocks/1
@@ -12,8 +12,15 @@ class BlocksController < ApplicationController
   def show
   end
 
+  # blocknotify=curl --request POST --url http://localhost:3000/block_trigger.json --header 'Content-Type: application/json' --data '{ "block_hash":"%s" }'
   def trigger
-    puts params["block_hash"]
+    block_data = InsightService.new(params["block_hash"])
+
+    Block.create(
+      height: block_data.height,
+      block_hash: block_data.block_hash,
+      epoch_time: block_data.time
+    )
 
     render json: {status: 200}, status: 200
   end
@@ -75,6 +82,6 @@ class BlocksController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def block_params
-      params.require(:block).permit(:height, :block_hash)
+      params.require(:block).permit(:height, :block_hash, :epoch_time)
     end
 end
