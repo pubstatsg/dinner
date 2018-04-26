@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  platform: MyString
+  player_id: MyString
+  region: MyString
+
+two:
+  platform: MyString
+  player_id: MyString
+  region: MyString
